@@ -10,21 +10,22 @@ class Livro:
         self.lido = lido
 
     def __repr__(self):
-        return repr((self.registro))
+        return repr(self.registro)
 
-    def busca_autor(self, autor):
+    def busca_autor(self, autor):#busca de lista
         for i in Livros:
             if autor == i.autor:
                 print(i)
 
-    def busca_titulo(self, registro):
+    def busca_titulo(self, registro):#busca de lista
         for i in Livros:
             if registro == i.registro:
                 print(i)
 
-    def lido_livro(self, data):
-         self.lido = 'Sim'
-         self.data = data
+    def nao_lido(self,):
+        for i in Livros:
+            if i.lido == 'Não':
+                print(i.registro)
 
     def info(self):
         print('********************************************************')
@@ -36,6 +37,10 @@ class Livro:
         print('Ano de aquisição do livro....: ' + str(self.ano_aquisicao))
         print('Data lido do livro...........: ' + str(self.data))
         print('Livro lido...................: ' + self.lido)
+
+    def len(self, data):
+         self.lido = 'Sim'
+         self.data = data
 
 L1 = Livro('The Witcher - O Sangue dos Elfos', 'Sapkowski Andrzej', 'WMF Martins Fontes', 1994, 2020, 000, 'Sim')
 L2 = Livro('O Senhor dos Anéis - As Duas Torres', 'J. R. R. Tolkien', 'HarperCollins Brasil', 2001, 2018, 000, 'Não')
@@ -61,12 +66,17 @@ print(' Lista de todos livros em ordem alfabética: ')
 print()
 print(sorted(Livros, key=lambda Livro: Livro.registro))
 
-print()
-print(' livros que foram lidos: ')
-Livros[0].lido_livro(2020)
-print()
+print("*********************************")
+
+print(' livros que não foram lidos: ')
+Livros[0].nao_lido()
+
+print("*********************************")
+
 print(' Busca do livro pelo autor: ')
 Livros[0].busca_autor('J. R. R. Tolkien')
-print()
+
+print("*********************************")
+
 print(' Busca pelo titulo: ')
 Livros[0].busca_titulo('Neuromancer: 1')
